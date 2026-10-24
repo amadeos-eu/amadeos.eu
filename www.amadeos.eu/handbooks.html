@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handbooks · amadeOS</title>
+  <meta name="description" content="The three handbooks of amadeOS: the User's Handbook, the Application Developer's Handbook and the Game Developer's Handbook.">
+  <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/amadeos.css">
+</head>
+<body>
+  <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
+  </div>
+<main>
+<div class="page-head"><div class="wrap"><h1>Three handbooks</h1><p>amadeOS is documented as books, online and installed on every amadeOS computer, where the Help drawer of the Front Panel opens them.</p></div></div>
+<section>
+  <div class="wrap">
+    <div class="books">
+      <div class="book bevel"><div class="kicker">For everyone</div><h3>User's Handbook</h3>
+        <p>Why amadeOS exists, how to install it, and how to use and administer it, from the first login to the
+          command line. Seven parts and six appendices, with a chapter for every program.</p>
+        <div><a class="btn" href="https://datazuul.github.io/amadeos/">Open the book</a></div></div>
+      <div class="book bevel"><div class="kicker">For programmers</div><h3>Application Developer's Handbook</h3>
+        <p>How the amade applications are written with Java and Swing, one real program per chapter, from the Text
+          Editor to the Mailer, and how to package your own.</p>
+        <div><a class="btn" href="https://datazuul.github.io/amade-commons/">Open the book</a></div></div>
+      <div class="book bevel"><div class="kicker">For game makers</div><h3>Game Developer's Handbook</h3>
+        <p>A 2D game engine in Java, built up game by game: from Paddle and Bricks to Sands, Colony and Town, with a
+          complete engine manual.</p>
+        <div><a class="btn" href="https://datazuul.github.io/amade-game-engine/">Open the book</a></div></div>
+    </div>
+  </div>
+</section>
+</main>
+  <div class="htmx-fragment" hx-get="/includes/footer.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></noscript>
+  </div>
+  <script src="/assets/js/htmx.min.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

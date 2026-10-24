@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download · amadeOS</title>
+  <meta name="description" content="How to get amadeOS: the image for a USB stick, what your computer needs, and how to build the image yourself.">
+  <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/amadeos.css">
+</head>
+<body>
+  <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
+  </div>
+<main>
+<div class="page-head"><div class="wrap"><h1>Get amadeOS</h1><p>amadeOS comes as one image file for a USB stick. It starts as a live system that changes nothing on your computer, and installs onto the disk from there, on its own or next to Windows.</p></div></div>
+<section>
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <div class="note"><strong>Not released yet.</strong> The first release will be offered here for download,
+          with its checksum and a list of every package in it. Until then you build the image yourself from the
+          source code with one script.</div>
+        <pre><code>git clone https://github.com/datazuul/amadeos.git
+cd amadeos
+./buildDistribution.sh</code></pre>
+        <p>The script fetches and builds the desktop, the applications and the games and writes
+          <code>artifacts/amadeos-amd64.iso</code>. It needs Debian or Ubuntu with Java 25 and live-build.
+          <a href="https://datazuul.github.io/amadeos/11-getting-the-image/">Chapter 11 of the User's Handbook</a>
+          explains every step, <a href="https://datazuul.github.io/amadeos/12-writing-a-usb-stick/">chapter 12</a>
+          how to write the stick and <a href="https://datazuul.github.io/amadeos/14-installing/">chapter 14</a>
+          how to install.</p>
+        <div class="note sov">You can check what is in the image, not only that it arrived intact: the whole source
+          code is public, and anyone can build the same image from it.</div>
+      </div>
+      <div>
+        <h3>What you need</h3>
+        <table>
+          <tr><th></th><th>Minimum</th><th>Recommended</th></tr>
+          <tr><td>Processor</td><td>64-bit Intel or AMD</td><td>Two cores or more</td></tr>
+          <tr><td>Memory</td><td>2 GB</td><td>4 GB or more</td></tr>
+          <tr><td>Disk</td><td>8 GB</td><td>20 GB or more</td></tr>
+          <tr><td>Screen</td><td>1024 × 768</td><td>1280 × 800 or more</td></tr>
+          <tr><td>Start-up</td><td>BIOS or UEFI</td><td>UEFI, Secure Boot works</td></tr>
+          <tr><td>USB stick</td><td colspan="2">4 GB or more</td></tr>
+        </table>
+        <p>A computer that ran Windows 10 well is usually more than enough. No 3D graphics needed.</p>
+        <figure><div class="window bevel"><div class="title">Install amadeOS</div>
+          <img src="/assets/images/installer-welcome.jpg" alt="The welcome page of the installer" loading="lazy"></div></figure>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+  <div class="htmx-fragment" hx-get="/includes/footer.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></noscript>
+  </div>
+  <script src="/assets/js/htmx.min.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The amadeOS desktop</title>
+  <meta name="description" content="The amadeOS desktop: Front Panel, workspaces, Motif windows and Settings in the tradition of CDE, written in Java.">
+  <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/amadeos.css">
+</head>
+<body>
+  <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
+  </div>
+<main>
+<div class="page-head"><div class="wrap"><h1>A classic desktop, made new</h1><p>The amadeOS desktop follows the Common Desktop Environment of the 1990s: a Front Panel with drawers, four named workspaces, Motif window frames and one place for all settings. Its display manager, window manager, panel and settings are new programs in Java.</p></div></div>
+<section>
+  <div class="wrap">
+    <div class="shots">
+      <figure><div class="window bevel"><div class="title">Front Panel</div>
+        <img src="/assets/images/drawer-office.jpg" alt="The Front Panel with the Text &amp; Office drawer open" loading="lazy"></div>
+        <figcaption>The Front Panel: clock, calendar, workspaces and drawers that fill themselves with the installed programs.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Workspaces</div>
+        <img src="/assets/images/workspace-menu.jpg" alt="The workspace menu on the desktop" loading="lazy"></div>
+        <figcaption>Four workspaces with names and backdrops of their own; a click on the desktop opens the workspace menu.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Windows</div>
+        <img src="/assets/images/window-menu.jpg" alt="A window with its window menu open" loading="lazy"></div>
+        <figcaption>Motif window frames with the window menu: move, resize, minimise to an icon, close.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Settings</div>
+        <img src="/assets/images/settings.jpg" alt="The Settings window with its sidebar" loading="lazy"></div>
+        <figcaption>Settings: colour palettes, backdrops, fonts, keyboard, mouse, display, passwords, updates and language in one window.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Colour</div>
+        <img src="/assets/images/settings-color.jpg" alt="The colour palettes in Settings" loading="lazy"></div>
+        <figcaption>Colour palettes from CDE and new ones; windows, panel and applications change together.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Backdrop</div>
+        <img src="/assets/images/settings-backdrop.jpg" alt="The backdrops in Settings" loading="lazy"></div>
+        <figcaption>The original CDE pattern backdrops, in the shades of the chosen palette, or your own pictures.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Login</div>
+        <img src="/assets/images/login-screen.jpg" alt="The amadeOS login screen" loading="lazy"></div>
+        <figcaption>The login screen, where you also choose the language of the session: English, Deutsch, Français, Español or Italiano.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Software</div>
+        <img src="/assets/images/software.jpg" alt="The Software program with the catalogue of programs" loading="lazy"></div>
+        <figcaption>Software: updates and thousands of Debian programs, installed with one click.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Installer</div>
+        <img src="/assets/images/installer-disk.jpg" alt="The installer choosing a disk" loading="lazy"></div>
+        <figcaption>Install amadeOS: language, keyboard, time zone, disk and first user, on its own or next to Windows.</figcaption></figure>
+      <figure><div class="window bevel"><div class="title">Display</div>
+        <img src="/assets/images/settings-display.jpg" alt="The Display page in Settings" loading="lazy"></div>
+        <figcaption>Screen resolution and refresh rate, with a safe "Keep these settings?" countdown.</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap prose">
+    <h2>Under the hood</h2>
+    <p>The desktop consists of a few Debian packages: the display manager with the login screen, the session with screen
+      lock and screen saver, a reparenting X11 window manager, the Front Panel and Settings. The window manager speaks
+      the ICCCM and EWMH standards, so programs that are not written in Java work as well. Part VII of the
+      <a href="https://datazuul.github.io/amadeos/">User's Handbook</a> explains how it all fits together.</p>
+  </div>
+</section>
+</main>
+  <div class="htmx-fragment" hx-get="/includes/footer.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></noscript>
+  </div>
+  <script src="/assets/js/htmx.min.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
