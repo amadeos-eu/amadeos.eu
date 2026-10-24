@@ -15,7 +15,7 @@ menu). Everything is served from the site itself: no CDN, no web fonts, no cooki
 
 ```
 www.amadeos.eu/
-  index.html why.html desktop.html applications.html games.html download.html handbooks.html contribute.html
+  index.html why.html desktop.html system.html applications.html games.html download.html handbooks.html contribute.html
   imprint.html privacy.html robots.txt sitemap.xml
   includes/header.html includes/footer.html   shared menu and footer (links are root-relative)
   assets/css/amadeos.css                      Warm Motif palette and Motif bevels of the amadeOS desktop

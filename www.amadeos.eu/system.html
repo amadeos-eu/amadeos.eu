@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What amadeOS adds to Debian · amadeOS</title>
+  <meta name="description" content="amadeos-system: the display manager, session, window manager, Front Panel, Settings and system tools that amadeOS adds on top of Debian, and how Java talks to Linux and X11 through JNA.">
+  <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/amadeos.css">
+</head>
+<body>
+  <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/system.html">System</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
+  </div>
+<main>
+<div class="page-head"><div class="wrap"><h1>What amadeOS adds to Debian</h1><p>Debian brings the kernel, the drivers, the X server, systemd and thousands of programs. amadeOS adds the desktop on top: ten packages from the repository amadeos-system, all written in Java.</p></div></div>
+<section>
+  <div class="wrap">
+    <h2>Debian underneath, amadeOS on top</h2>
+    <p class="intro">amadeOS does not replace any part of Debian. Its packages are ordinary Debian packages that use
+      Debian's services: PAM to log in, logind for the session, polkit for administrator rights, NetworkManager, CUPS
+      and apt.</p>
+    <div class="two">
+      <div>
+        <h3>From Debian 13</h3>
+        <table>
+          <tr><td>Linux kernel, firmware and drivers</td></tr>
+          <tr><td>Xorg (X11), Mesa, fonts</td></tr>
+          <tr><td>systemd, logind, PAM, polkit</td></tr>
+          <tr><td>NetworkManager, CUPS, PipeWire</td></tr>
+          <tr><td>apt, dpkg, AppStream, unattended-upgrades</td></tr>
+          <tr><td>OpenJDK 25, GRUB, live-boot</td></tr>
+          <tr><td>Firefox ESR, LibreOffice and the whole Debian archive</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>From amadeos-system</h3>
+        <table>
+          <tr><th>Package</th><th>What it is</th></tr>
+          <tr><td><code>amadeos-dm</code></td><td>Display manager and login screen</td></tr>
+          <tr><td><code>amadeos-session</code></td><td>Session, screen lock, screen saver, polkit agent, clipboard manager</td></tr>
+          <tr><td><code>amadeos-wm</code></td><td>Window manager with Motif frames and four workspaces</td></tr>
+          <tr><td><code>amadeos-panel-cde</code></td><td>The Front Panel with its drawers</td></tr>
+          <tr><td><code>amadeos-settings</code></td><td>Settings, formerly the Style Manager</td></tr>
+          <tr><td><code>amadeos-software</code></td><td>Software: install, update and remove programs</td></tr>
+          <tr><td><code>amadeos-packages</code></td><td>The administrator helper behind updates and Software</td></tr>
+          <tr><td><code>amadeos-print</code></td><td>Print Manager</td></tr>
+          <tr><td><code>amadeos-logviewer</code></td><td>Session Diagnostics &amp; Logs</td></tr>
+          <tr><td><code>amadeos-sysinfo</code></td><td>System Information</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>From power-on to the desktop</h2>
+    <div class="cards">
+      <div class="card bevel"><h3>Display manager</h3><p>A systemd service starts Xorg and the login screen. It
+        checks the password through PAM in a separate root process, opens a logind session and starts the desktop
+        as the user, in the language, keyboard layout and time zone chosen on the login screen.</p></div>
+      <div class="card bevel"><h3>Session</h3><p>Starts the window manager and restarts it if it fails, runs the
+        start-up scripts and your own programs, then the Front Panel. Programs started from the panel each write a
+        log of their own.</p></div>
+      <div class="card bevel"><h3>Window manager</h3><p>A floating, reparenting X11 window manager: Motif frames with
+        the CDE window menu, move and resize, minimise to desktop icons, four workspaces, the workspace menu, and the
+        ICCCM and EWMH standards, so programs not written in Java work as well.</p></div>
+      <div class="card bevel"><h3>Front Panel</h3><p>Clock, calendar, workspace switch, lock and language buttons,
+        network and updates cells, and drawers that fill themselves from the installed programs' desktop entries
+        and follow every install.</p></div>
+      <div class="card bevel"><h3>Lock and screen saver</h3><p>The screen saver uses the X server's idle time, shows a
+        module (Qix, Swarm, Starfield, Floating Logo) and locks the screen. The lock grabs keyboard and mouse and
+        asks for the password through PAM.</p></div>
+      <div class="card bevel"><h3>Clipboard manager</h3><p>Keeps a history of what you copied, in memory only, and
+        keeps a copy alive when the program that made it closes. Copies that a password manager marks as secret are
+        left out.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>All settings in one place</h2>
+    <p class="intro">Settings shows every control in a sidebar with a search field, or, under View &gt; Compact, as
+      CDE's row of buttons with a dialog each. Changes apply at once: the window manager, the panel and every amade
+      application follow the files in <code>~/.config/amadeos/</code>.</p>
+    <div class="settings-grid">
+      <figure><div class="window bevel"><img src="/assets/images/settings.jpg" alt="Settings: Color" loading="lazy"></div><figcaption><strong>Color</strong>: Palettes from CDE and new ones, with the four workspace colours, and the icon theme.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-font.jpg" alt="Settings: Font" loading="lazy"></div><figcaption><strong>Font</strong>: CDE's sizes 1 to 7, followed by the panel, the window frames and every amade application.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-backdrop.jpg" alt="Settings: Backdrop" loading="lazy"></div><figcaption><strong>Backdrop</strong>: CDE's pattern backdrops in the palette's shades, or your own pictures, per workspace.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-workspaces.jpg" alt="Settings: Workspaces" loading="lazy"></div><figcaption><strong>Workspaces</strong>: Names of the four workspaces.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-panel.jpg" alt="Settings: Front Panel" loading="lazy"></div><figcaption><strong>Front Panel</strong>: Analog or digital clock, network and updates cells.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-keyboard.jpg" alt="Settings: Keyboard" loading="lazy"></div><figcaption><strong>Keyboard</strong>: Key repeat and key click.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-mouse.jpg" alt="Settings: Mouse" loading="lazy"></div><figcaption><strong>Mouse</strong>: Left- or right-handed, double-click time and acceleration.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-beep.jpg" alt="Settings: Beep" loading="lazy"></div><figcaption><strong>Beep</strong>: Volume, pitch and length of the bell, played through the sound card.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-display.jpg" alt="Settings: Display" loading="lazy"></div><figcaption><strong>Display</strong>: Resolution, refresh rate, rotation and arrangement of each monitor.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-screen.jpg" alt="Settings: Screen" loading="lazy"></div><figcaption><strong>Screen</strong>: Screen saver modules and when the screen locks.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-window.jpg" alt="Settings: Window" loading="lazy"></div><figcaption><strong>Window</strong>: Click or point to focus, raise when active, show contents while moving.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-clipboard.jpg" alt="Settings: Clipboard" loading="lazy"></div><figcaption><strong>Clipboard</strong>: Size of the clipboard history, and whether selected text is recorded.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-startup.jpg" alt="Settings: Startup" loading="lazy"></div><figcaption><strong>Startup</strong>: Your own programs at login, and the desktop services that start with the session.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-passwords.jpg" alt="Settings: Passwords" loading="lazy"></div><figcaption><strong>Passwords</strong>: Lock, unlock and change the password of the login keyring.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-updates.jpg" alt="Settings: Updates" loading="lazy"></div><figcaption><strong>Updates</strong>: Automatic security updates and the updates waiting.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-language.jpg" alt="Settings: Language" loading="lazy"></div><figcaption><strong>Language</strong>: Desktop language and the system's time zone.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Dialogs of the system</h2>
+    <p class="intro">Where the system needs you, it asks in a window of the desktop, in your language and colours.</p>
+    <div class="settings-grid">
+      <figure><div class="window bevel"><img src="/assets/images/login-screen.jpg" alt="The login screen" loading="lazy"></div><figcaption><strong>Login</strong>: user, password, language, keyboard layout, time zone, restart and shut down.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/lock-screen.jpg" alt="The screen lock" loading="lazy"></div><figcaption><strong>Screen lock</strong>: Super+L, the lock button or the screen saver; the password unlocks.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/password-window.jpg" alt="The administrator password dialog" loading="lazy"></div><figcaption><strong>Administrator password</strong>: amadeOS's own polkit agent, for example when Software installs a program.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/display-keep.jpg" alt="Keep these display settings?" loading="lazy"></div><figcaption><strong>Keep these settings?</strong> A new resolution goes back by itself after 15 seconds unless you keep it.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/clipboard-history.jpg" alt="The clipboard history" loading="lazy"></div><figcaption><strong>Clipboard history</strong>: Ctrl+Alt+V, then Enter or 1 to 9 to paste an earlier copy.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/software.jpg" alt="Software" loading="lazy"></div><figcaption><strong>Software and updates</strong>: the updates cell of the panel shows waiting updates, security updates in red.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/print-manager.jpg" alt="Print Manager" loading="lazy"></div><figcaption><strong>Print Manager</strong>: printers and their jobs, spoken to CUPS directly over IPP.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/session-logs.jpg" alt="Session Diagnostics and Logs" loading="lazy"></div><figcaption><strong>Session Diagnostics &amp; Logs</strong>: every program's log and the system journal, one at a time.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/system-information.jpg" alt="System Information" loading="lazy"></div><figcaption><strong>System Information</strong>: processor, memory, disks, graphics, network and battery on one page.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How Java talks to Linux: JNA</h2>
+    <p class="intro">Java cannot speak to the X server or to PAM on its own. amadeOS uses
+      <a href="https://github.com/java-native-access/jna">JNA</a> (Java Native Access) for that: Java interfaces
+      that name the C functions of a system library, which JNA calls at run time. There is no C code to compile, so
+      every amadeOS package is the same for every processor (<code>Architecture: all</code>), and the whole binding
+      is readable Java in the module <code>base</code> of amadeos-system.</p>
+    <table>
+      <tr><th>Library</th><th>Debian package</th><th>Used for</th></tr>
+      <tr><td><code>libX11</code> (Xlib)</td><td>libx11-6</td><td>The window manager: about a hundred Xlib calls for events, reparenting frames,
+        window properties (ICCCM, EWMH), focus, key and pointer grabs, selections and drawing. The lock and the
+        panel use it too.</td></tr>
+      <tr><td>XKB (in libX11)</td><td>libx11-6</td><td>The bell: the window manager turns the PC-speaker bell off and plays the tone through
+        the sound card instead.</td></tr>
+      <tr><td><code>libXfixes</code></td><td>libxfixes3</td><td>The clipboard manager: the X server reports every new owner of the clipboard.</td></tr>
+      <tr><td><code>libXss</code></td><td>libxss1</td><td>The screen saver: the X server's idle time since the last key or mouse input.</td></tr>
+      <tr><td><code>libpam</code></td><td>libpam0g</td><td>Login screen and screen lock: check the password, open and close the session,
+        set up its environment (and with it the login keyring).</td></tr>
+      <tr><td><code>libc</code></td><td>libc6</td><td>The display manager: switch to the user (setuid, setgid, initgroups) before starting
+        the session, and memory for PAM's conversation.</td></tr>
+    </table>
+    <h3 style="margin-top:28px">And where a program does the job better</h3>
+    <p>Not everything needs a native call. amadeOS uses Debian's own tools where they exist:
+      <code>nmcli</code> for the network, <code>xrandr</code> for monitors, <code>xset</code> and
+      <code>xmodmap</code> for keyboard and mouse, <code>timedatectl</code> for the time zone, apt through a small
+      root helper started with <code>pkexec</code>, and IPP spoken directly to CUPS. The handbooks explain each one:
+      <a href="https://datazuul.github.io/amadeos/">Part VII of the User's Handbook</a> and
+      <a href="https://datazuul.github.io/amade-commons/">Part VI of the Application Developer's Handbook</a>.</p>
+  </div>
+</section>
+</main>
+  <div class="htmx-fragment" hx-get="/includes/footer.html" hx-trigger="load" hx-swap="outerHTML">
+    <noscript><a href="/imprint.html">Imprint</a> · <a href="/privacy.html">Privacy</a></noscript>
+  </div>
+  <script src="/assets/js/htmx.min.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>
