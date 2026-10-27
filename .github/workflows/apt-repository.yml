@@ -27,6 +27,8 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-24.04
+    # A normal run takes about two minutes; a hanging mirror or upload must not block the runs behind it.
+    timeout-minutes: 20
     env:
       HAS_SECRETS: ${{ secrets.APT_SIGNING_KEY != '' && secrets.APT_DEPLOY_SSH_KEY != '' && secrets.APT_DEPLOY_HOST != '' }}
     steps:
@@ -63,6 +65,7 @@ jobs:
 
       - name: Install the tools
         if: steps.changed.outputs.changed == 'true'
+        timeout-minutes: 5
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq apt-utils appstream appstream-compose imagemagick
