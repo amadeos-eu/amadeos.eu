@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>amadeOS package repository</title>
+  <style>
+    body { font-family: "DejaVu Sans", sans-serif; max-width: 46em; margin: 2em auto; padding: 0 16px; background: #e8e2dc; color: #2b2420; line-height: 1.5; }
+    pre { background: #2b2420; color: #f0ece8; padding: 12px 14px; overflow-x: auto; }
+    a { color: #1f5f43; }
+  </style>
+</head>
+<body>
+  <h1>amadeOS package repository</h1>
+  <p>The Debian packages of <a href="https://www.amadeos.eu/">amadeOS</a>: the desktop, its applications and games.
+    Newer amadeOS images have it set up already. On an amadeOS installed from version 1.0.0 it is added once with:</p>
+  <pre><code>curl -fsSLO https://apt.amadeos.eu/amadeos-archive-keyring.deb
+sudo apt install ./amadeos-archive-keyring.deb
+sudo apt update</code></pre>
+  <p>From then on the package <code>amadeos-archive-keyring</code> keeps the key and the source up to date, and
+    amadeOS updates appear in the Front Panel like Debian's. The repository is signed with the key in
+    <a href="amadeos-archive-keyring.asc">amadeos-archive-keyring.asc</a>.
+    Browse the <a href="pool/main/">packages</a> or the <a href="dists/">index files</a>.</p>
+</body>
+</html>

@@ -1,0 +1,118 @@
+name: apt repository
+
+# Publishes https://apt.amadeos.eu, the signed apt repository of amadeOS (see apt.amadeos.eu/README.md): every 30
+# minutes it checks the stable GitHub Releases of the amadeOS repositories and, when they or the files in
+# apt.amadeos.eu/ changed, rebuilds, signs and uploads the repository.
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild and upload even if nothing changed
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ['apt.amadeos.eu/**', '.github/workflows/apt-repository.yml']
+
+permissions:
+  contents: read
+
+# One run at a time, and a waiting run is not cancelled: it may carry a newer release.
+concurrency:
+  group: apt-repository
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    env:
+      HAS_SECRETS: ${{ secrets.APT_SIGNING_KEY != '' && secrets.APT_DEPLOY_SSH_KEY != '' && secrets.APT_DEPLOY_HOST != '' }}
+    steps:
+      - name: Secrets missing
+        if: env.HAS_SECRETS != 'true'
+        run: |
+          echo "::notice::APT_SIGNING_KEY, APT_DEPLOY_SSH_KEY or APT_DEPLOY_HOST is not set; nothing is published (see apt.amadeos.eu/README.md)."
+
+      - uses: actions/checkout@v7
+        if: env.HAS_SECRETS == 'true'
+
+      - name: List the released packages
+        if: env.HAS_SECRETS == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          LIST_ONLY=1 apt.amadeos.eu/scripts/collect.sh pool state.txt
+          # A change of the scripts, the key or the page republishes too.
+          printf 'config\t%s\n' "$(git ls-files -s apt.amadeos.eu .github/workflows/apt-repository.yml | sha256sum | cut -d' ' -f1)" >> state.txt
+
+      - name: Compare with the published repository
+        id: changed
+        if: env.HAS_SECRETS == 'true'
+        run: |
+          if [ "${{ inputs.force }}" = true ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          elif curl -fsS --retry 3 https://apt.amadeos.eu/state.txt -o published-state.txt && cmp -s state.txt published-state.txt; then
+            echo "Nothing new since the last upload."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            diff published-state.txt state.txt || true
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install the tools
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq apt-utils appstream appstream-compose imagemagick
+
+      - name: Download the packages
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: apt.amadeos.eu/scripts/collect.sh pool collected-state.txt
+
+      - name: Import the signing subkey
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          APT_SIGNING_KEY: ${{ secrets.APT_SIGNING_KEY }}
+        run: |
+          gpg --batch --import <<<"$APT_SIGNING_KEY"
+          # The secret holds only the signing subkey (the primary key stays offline), so sign with that subkey.
+          sub=$(gpg --batch --with-colons --list-secret-keys | awk -F: '$1=="ssb" && $12 ~ /s/ {getline; print $10; exit}')
+          [ -n "$sub" ] || { echo "No signing subkey in APT_SIGNING_KEY" >&2; exit 1; }
+          echo "SIGNING_KEY=$sub!" >> "$GITHUB_ENV"
+
+      - name: Build and sign the repository
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          SIGNING_PASSPHRASE: ${{ secrets.APT_SIGNING_PASSPHRASE }}
+        run: |
+          apt.amadeos.eu/scripts/build-repo.sh pool out
+          # The signature must verify with the public key in git, which is what the systems have.
+          gpg --dearmor < apt.amadeos.eu/amadeos-archive-key.asc > keyring.gpg
+          gpgv --keyring ./keyring.gpg out/dists/stable/InRelease
+          cp state.txt out/state.txt
+
+      - name: Upload
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          APT_DEPLOY_SSH_KEY: ${{ secrets.APT_DEPLOY_SSH_KEY }}
+          APT_DEPLOY_KNOWN_HOSTS: ${{ secrets.APT_DEPLOY_KNOWN_HOSTS }}
+          APT_DEPLOY_HOST: ${{ secrets.APT_DEPLOY_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          install -m 600 /dev/null ~/.ssh/apt-deploy
+          printf '%s\n' "$APT_DEPLOY_SSH_KEY" > ~/.ssh/apt-deploy
+          printf '%s\n' "$APT_DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # The key is bound to rrsync on the server, so paths are relative to the web root of apt.amadeos.eu.
+          sync=(rsync -rlt --chmod=D755,F644 -e "ssh -i $HOME/.ssh/apt-deploy -o StrictHostKeyChecking=yes")
+          dest="amadeos-apt@$APT_DEPLOY_HOST:"
+          # Order matters for clients updating meanwhile: new packages first, then the indexes, then the signed
+          # Release files that point to them, and only at the end the removal of what is gone.
+          "${sync[@]}" out/pool/ "${dest}pool/"
+          "${sync[@]}" --exclude='/dists/*/Release' --exclude='/dists/*/InRelease' --exclude='/dists/*/Release.gpg' \
+            --exclude='/state.txt' out/ "$dest"
+          "${sync[@]}" out/dists/ "${dest}dists/"
+          "${sync[@]}" --delete out/ "$dest"

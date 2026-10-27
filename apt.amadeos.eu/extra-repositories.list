@@ -1,0 +1,5 @@
+# Repositories whose stable releases go into the apt repository besides those of repositories.list in
+# datazuul/amadeos (that list is read from its main branch on every run). A repository without .deb assets in
+# its releases is skipped.
+amadeos
+amadeos-sample-books
