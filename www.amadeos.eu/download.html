@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Download · amadeOS</title>
-  <meta name="description" content="How to get amadeOS: the image for a USB stick, what your computer needs, and how to build the image yourself.">
+  <meta name="description" content="Download amadeOS 1.0.0: the image for a USB stick, its checksum, what your computer needs, and how to build the image yourself.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
 </head>
@@ -18,18 +18,31 @@
   <div class="wrap">
     <div class="two">
       <div>
-        <div class="note"><strong>Not released yet.</strong> The first release will be offered here for download,
-          with its checksum and a list of every package in it. Until then you build the image yourself from the
-          source code with one script.</div>
+        <h2>amadeOS 1.0.0</h2>
+        <p>Released on 27 October 2026. One image for 64-bit PCs, 1.4 GB.</p>
+        <div class="buttons">
+          <a class="btn primary" href="https://github.com/datazuul/amadeos/releases/download/v1.0.0/amadeos-1.0.0-amd64.iso">Download amadeOS 1.0.0</a>
+          <a class="btn" href="https://github.com/datazuul/amadeos/releases/tag/v1.0.0">Release notes</a>
+        </div>
+        <h3>Check the download</h3>
+        <p>The SHA-256 checksum of <code>amadeos-1.0.0-amd64.iso</code> is</p>
+        <pre><code>74697532e3712f8975d083d52f163260e24d8168f64af896b92b89ab1345dd20</code></pre>
+        <p>Download the <a href="https://github.com/datazuul/amadeos/releases/download/v1.0.0/amadeos-1.0.0-amd64.iso.sha256">checksum file</a>
+          next to the image and check it with</p>
+        <pre><code>sha256sum -c amadeos-1.0.0-amd64.iso.sha256</code></pre>
+        <p><a href="https://datazuul.github.io/amadeos/12-writing-a-usb-stick/">Chapter 12 of the User's Handbook</a>
+          explains how to write the image to a USB stick and
+          <a href="https://datazuul.github.io/amadeos/14-installing/">chapter 14</a> how to install amadeOS.
+          Older and newer versions are on the <a href="https://github.com/datazuul/amadeos/releases">releases page</a>.</p>
+        <h3>Build it yourself</h3>
+        <p>You can also build the image from the source code with one script:</p>
         <pre><code>git clone https://github.com/datazuul/amadeos.git
 cd amadeos
 ./buildDistribution.sh</code></pre>
         <p>The script fetches and builds the desktop, the applications and the games and writes
           <code>artifacts/amadeos-amd64.iso</code>. It needs Debian or Ubuntu with Java 25 and live-build.
           <a href="https://datazuul.github.io/amadeos/11-getting-the-image/">Chapter 11 of the User's Handbook</a>
-          explains every step, <a href="https://datazuul.github.io/amadeos/12-writing-a-usb-stick/">chapter 12</a>
-          how to write the stick and <a href="https://datazuul.github.io/amadeos/14-installing/">chapter 14</a>
-          how to install.</p>
+          explains every step.</p>
         <div class="note sov">You can check what is in the image, not only that it arrived intact: the whole source
           code is public, and anyone can build the same image from it.</div>
       </div>
