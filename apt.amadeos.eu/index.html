@@ -13,9 +13,10 @@
 <body>
   <h1>amadeOS package repository</h1>
   <p>The Debian packages of <a href="https://www.amadeos.eu/">amadeOS</a>: the desktop, its applications and games.
-    Newer amadeOS images have it set up already. On an amadeOS installed from version 1.0.0 it is added once with:</p>
-  <pre><code>curl -fsSLO https://apt.amadeos.eu/amadeos-archive-keyring.deb
-sudo apt install ./amadeos-archive-keyring.deb
+    Newer amadeOS images have it set up already. On an amadeOS installed from version 1.0.0 it is added once: download
+    <a href="amadeos-archive-keyring.deb">amadeos-archive-keyring.deb</a> with Firefox (it lands in
+    <em>Downloads</em>), then in a terminal:</p>
+  <pre><code>sudo apt install ~/Downloads/amadeos-archive-keyring.deb
 sudo apt update</code></pre>
   <p>From then on the package <code>amadeos-archive-keyring</code> keeps the key and the source up to date, and
     amadeOS updates appear in the Front Panel like Debian's. The repository is signed with the key in
