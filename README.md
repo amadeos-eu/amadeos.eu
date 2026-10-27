@@ -5,7 +5,7 @@ The websites of [amadeOS](https://github.com/datazuul/amadeos), one folder per h
 | Folder | Host | Content |
 |---|---|---|
 | [`www.amadeos.eu`](www.amadeos.eu) | https://www.amadeos.eu (amadeos.eu redirects there) | The project website |
-| `apt.amadeos.eu` (planned) | https://apt.amadeos.eu | The Debian package repository of amadeOS (ROADMAP M16) |
+| [`apt.amadeos.eu`](apt.amadeos.eu) | https://apt.amadeos.eu | The signed apt repository of amadeOS (ROADMAP M16), built and uploaded by the workflow `apt-repository.yml` |
 
 ## www.amadeos.eu
 
