@@ -3,3 +3,9 @@
 # its releases is skipped.
 amadeos
 amadeos-sample-books
+# New since amadeOS 1.0.0; in repositories.list on develop of amadeos, on main only after the next promotion.
+amade-artillery-game
+amade-backup
+amade-news
+amade-templar-game
+amade-tv
