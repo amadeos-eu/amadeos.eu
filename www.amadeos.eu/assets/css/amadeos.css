@@ -142,3 +142,4 @@ nav.main a.active { background: #d4cbc2; border-color: var(--warm-dark) var(--wa
 .prose h3 { margin-top: 20px; }
 .settings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; }
 .settings-grid .window img { width: 100%; }
+.app p.code-links, .game-card p.code-links { margin-top: 8px; font-size: .82rem; }
