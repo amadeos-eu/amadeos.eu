@@ -60,7 +60,7 @@ adds a 96×96 copy doubled without smoothing and a 128×128 one; packages that s
    ```
 2. **Server**: DNS A record `apt.amadeos.eu` (no AAAA), an SSH key for the upload
    (`ssh-keygen -t ed25519 -N '' -C amadeos-apt-deploy -f ~/.ssh/amadeos-apt-deploy`), then
-   `ansible-playbook -i inventories/production playbooks/deploy-apt.amadeos.eu.yml` in datazuul-devops. It sets up
+   `ansible-playbook playbooks/deploy-apt.amadeos.eu.yml` in amadeos-devops/ansible. It sets up
    nginx with TLS and the user `amadeos-apt`, whose key may only rsync into the web root.
 3. **Secrets** of this repository (Settings → Secrets and variables → Actions):
 
