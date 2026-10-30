@@ -1,6 +1,6 @@
 # amadeos.eu
 
-The websites of [amadeOS](https://github.com/datazuul/amadeos), one folder per host:
+The websites of [amadeOS](https://github.com/amadeos-eu/amadeos), one folder per host:
 
 | Folder | Host | Content |
 |---|---|---|
