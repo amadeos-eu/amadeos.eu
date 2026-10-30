@@ -8,7 +8,7 @@ apt.amadeos.eu/
   scripts/collect.sh        downloads the .deb assets of the last 3 stable GitHub Releases of every repository
   scripts/build-repo.sh     Packages, AppStream data (DEP-11), Release, signatures, amadeos-archive-keyring
   scripts/dep11.py          merges the AppStream catalogs of the packages and adds the package names
-  extra-repositories.list   repositories besides repositories.list of datazuul/amadeos
+  extra-repositories.list   repositories besides repositories.list of amadeos-eu/amadeos
   amadeos-archive-key.asc   the public key (the primary key stays offline with Ralf)
   keyring-version           version of the amadeos-archive-keyring package; raise it when the key or the source change
   index.html                the page at https://apt.amadeos.eu/
@@ -17,7 +17,7 @@ apt.amadeos.eu/
 ## How a release gets to the systems
 
 1. A repository is promoted to `main`; its build tags `vX.Y.Z` and attaches the `.deb` files to a GitHub Release
-   (datazuul/amadeos-ci `release`).
+   (amadeos-eu/amadeos-ci `release`).
 2. The workflow [`apt-repository.yml`](../.github/workflows/apt-repository.yml) runs every 30 minutes. It lists the
    stable releases of all repositories (only API calls) and compares the list with `https://apt.amadeos.eu/state.txt`.
    Nothing new: it stops. Otherwise it downloads the packages, builds and signs the repository and uploads it with
