@@ -39,12 +39,12 @@ and open <http://localhost:8080/>.
 
 ### Deploy
 
-With Ansible from [datazuul-devops](https://github.com/datazuul/datazuul-devops), which expects this repository
-next to it:
+With Ansible from the private repository [amadeos-devops](https://github.com/amadeos-eu/amadeos-devops), which
+expects this repository next to it (and datazuul-devops in `../../datazuul/`, for the shared server setup):
 
 ```bash
-cd ../datazuul-devops/ansible
-ansible-playbook -i inventories/production playbooks/deploy-www.amadeos.eu.yml
+cd ../amadeos-devops/ansible
+ansible-playbook playbooks/deploy-www.amadeos.eu.yml
 ```
 
 The playbook sets up nginx for www.amadeos.eu and amadeos.eu, gets the Let's Encrypt certificate and copies
