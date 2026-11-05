@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Download · amadeOS</title>
-  <meta name="description" content="Download amadeOS 1.0.0: the image for a USB stick, its checksum, what your computer needs, and how to build the image yourself.">
+  <meta name="description" content="Download amadeOS 1.1.0: the image for a USB stick, its checksum, what your computer needs, and how to build the image yourself.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
+  <link rel="stylesheet" href="/assets/css/horizon.css">
+  <script>try{document.documentElement.dataset.look=localStorage.getItem('look')||'horizon'}catch(e){}</script>
 </head>
 <body>
   <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
@@ -18,18 +20,17 @@
   <div class="wrap">
     <div class="two">
       <div>
-        <h2>amadeOS 1.0.0</h2>
-        <p>Released on 27 October 2026. One image for 64-bit PCs, 1.4 GB.</p>
+        <h2>amadeOS 1.1.0</h2>
+        <p>Released on 4 November 2026. One image for 64-bit PCs, 1.8 GB. New in 1.1.0: the Horizon look, Image Editor, Book Editor, Terminal, Webcam, Task Manager, Disks, the game Rivet and many new pages in Settings.</p>
         <div class="buttons">
-          <a class="btn primary" href="https://github.com/amadeos-eu/amadeos/releases/download/v1.0.0/amadeos-1.0.0-amd64.iso">Download amadeOS 1.0.0</a>
-          <a class="btn" href="https://github.com/amadeos-eu/amadeos/releases/tag/v1.0.0">Release notes</a>
+          <a class="btn primary" href="https://github.com/amadeos-eu/amadeos/releases/download/v1.1.0/amadeos-1.1.0-amd64.iso">Download amadeOS 1.1.0</a>
+          <a class="btn" href="https://github.com/amadeos-eu/amadeos/releases/tag/v1.1.0">Release notes</a>
         </div>
         <h3>Check the download</h3>
-        <p>The SHA-256 checksum of <code>amadeos-1.0.0-amd64.iso</code> is</p>
-        <pre><code>74697532e3712f8975d083d52f163260e24d8168f64af896b92b89ab1345dd20</code></pre>
-        <p>Download the <a href="https://github.com/amadeos-eu/amadeos/releases/download/v1.0.0/amadeos-1.0.0-amd64.iso.sha256">checksum file</a>
-          next to the image and check it with</p>
-        <pre><code>sha256sum -c amadeos-1.0.0-amd64.iso.sha256</code></pre>
+        <p>The SHA-256 checksum of <code>amadeos-1.1.0-amd64.iso</code> is</p>
+        <pre><code>4b7ebe71441187a59d9e2d597cee028f5d66461ca169aeafe0dd3d8542448d58</code></pre>
+        <p>Check it in the folder of the download with</p>
+        <pre><code>echo "4b7ebe71441187a59d9e2d597cee028f5d66461ca169aeafe0dd3d8542448d58  amadeos-1.1.0-amd64.iso" | sha256sum -c</code></pre>
         <p><a href="https://docs.amadeos.eu/amadeos/12-writing-a-usb-stick/">Chapter 12 of the User's Handbook</a>
           explains how to write the image to a USB stick and
           <a href="https://docs.amadeos.eu/amadeos/14-installing/">chapter 14</a> how to install amadeOS.
@@ -40,7 +41,7 @@
 cd amadeos
 ./buildDistribution.sh</code></pre>
         <p>The script fetches and builds the desktop, the applications and the games and writes
-          <code>artifacts/amadeos-amd64.iso</code>. It needs Debian or Ubuntu with Java 25 and live-build.
+          <code>artifacts/amadeos-&lt;version&gt;-amd64.iso</code>. It needs Debian or Ubuntu with Java 25 and live-build.
           <a href="https://docs.amadeos.eu/amadeos/11-getting-the-image/">Chapter 11 of the User's Handbook</a>
           explains every step.</p>
         <div class="note sov">You can check what is in the image, not only that it arrived intact: the whole source

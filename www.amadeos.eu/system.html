@@ -7,6 +7,8 @@
   <meta name="description" content="amadeos-system: the display manager, session, window manager, Front Panel, Settings and system tools that amadeOS adds on top of Debian, and how Java talks to Linux and X11 through JNA.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
+  <link rel="stylesheet" href="/assets/css/horizon.css">
+  <script>try{document.documentElement.dataset.look=localStorage.getItem('look')||'horizon'}catch(e){}</script>
 </head>
 <body>
   <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
@@ -38,15 +40,20 @@
         <table>
           <tr><th>Package</th><th>What it is</th></tr>
           <tr><td><code>amadeos-dm</code></td><td>Display manager and login screen</td></tr>
-          <tr><td><code>amadeos-session</code></td><td>Session, screen lock, screen saver, polkit agent, clipboard manager</td></tr>
+          <tr><td><code>amadeos-session</code></td><td>Session, screen lock, screen saver, polkit agent, clipboard manager, notifications, power management</td></tr>
           <tr><td><code>amadeos-wm</code></td><td>Window manager with Motif frames and four workspaces</td></tr>
           <tr><td><code>amadeos-panel-cde</code></td><td>The Front Panel with its drawers</td></tr>
+          <tr><td><code>amadeos-panel-horizon</code></td><td>The Horizon top bar, dock and search</td></tr>
+          <tr><td><code>amadeos-widgets</code></td><td>Desktop widgets of the Horizon look</td></tr>
+          <tr><td><code>amadeos-icons-horizon</code></td><td>The flat icon set of the Horizon look</td></tr>
           <tr><td><code>amadeos-settings</code></td><td>Settings, formerly the Style Manager</td></tr>
           <tr><td><code>amadeos-software</code></td><td>Software: install, update and remove programs</td></tr>
           <tr><td><code>amadeos-packages</code></td><td>The administrator helper behind updates and Software</td></tr>
           <tr><td><code>amadeos-print</code></td><td>Print Manager</td></tr>
           <tr><td><code>amadeos-logviewer</code></td><td>Session Diagnostics &amp; Logs</td></tr>
           <tr><td><code>amadeos-sysinfo</code></td><td>System Information</td></tr>
+          <tr><td><code>amadeos-taskmanager</code></td><td>Task Manager</td></tr>
+          <tr><td><code>amadeos-disks</code></td><td>Disks</td></tr>
         </table>
       </div>
     </div>
@@ -69,6 +76,11 @@
       <div class="card bevel"><h3>Front Panel</h3><p>Clock, calendar, workspace switch, lock and language buttons,
         network and updates cells, and drawers that fill themselves from the installed programs' desktop entries
         and follow every install.</p></div>
+      <div class="card bevel"><h3>Top bar and dock</h3><p>In the Horizon look: the program menu, status cells, clock and
+        power button at the top, the dock with favourites, drawers and the Trash at the bottom, search with Super+Space
+        and widgets on the desktop.</p></div>
+      <div class="card bevel"><h3>Notifications</h3><p>Pop-ups from programs and the system, with a history, Do not
+        disturb and the standard freedesktop interface, so programs not written in Java can use it too.</p></div>
       <div class="card bevel"><h3>Lock and screen saver</h3><p>The screen saver uses the X server's idle time, shows a
         module (Qix, Swarm, Starfield, Floating Logo) and locks the screen. The lock grabs keyboard and mouse and
         asks for the password through PAM.</p></div>
@@ -102,6 +114,19 @@
       <figure><div class="window bevel"><img src="/assets/images/settings-passwords.jpg" alt="Settings: Passwords" loading="lazy"></div><figcaption><strong>Passwords</strong>: Lock, unlock and change the password of the login keyring.</figcaption></figure>
       <figure><div class="window bevel"><img src="/assets/images/settings-updates.jpg" alt="Settings: Updates" loading="lazy"></div><figcaption><strong>Updates</strong>: Automatic security updates and the updates waiting.</figcaption></figure>
       <figure><div class="window bevel"><img src="/assets/images/settings-language.jpg" alt="Settings: Language" loading="lazy"></div><figcaption><strong>Language</strong>: Desktop language and the system's time zone.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-look.jpg" alt="Settings: Desktop look" loading="lazy"></div><figcaption><strong>Desktop look</strong>: Horizon or Classic, dark or light, the accent colour and the dock.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-notifications.jpg" alt="Settings: Notifications" loading="lazy"></div><figcaption><strong>Notifications</strong>: Pop-ups, their place and Do not disturb.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-shortcuts.jpg" alt="Settings: Keyboard Shortcuts" loading="lazy"></div><figcaption><strong>Keyboard Shortcuts</strong>: Every key combination of the desktop, changeable.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-accessibility.jpg" alt="Settings: Accessibility" loading="lazy"></div><figcaption><strong>Accessibility</strong>: High contrast, larger pointer, sticky and slow keys, mouse keys.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-sound.jpg" alt="Settings: Sound" loading="lazy"></div><figcaption><strong>Sound</strong>: Volume, output and input devices.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-power.jpg" alt="Settings: Power" loading="lazy"></div><figcaption><strong>Power</strong>: Suspend, the lid of the laptop, the power button and the battery.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-network.jpg" alt="Settings: Network" loading="lazy"></div><figcaption><strong>Network</strong>: Wired and Wi-Fi connections.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-proxy.jpg" alt="Settings: Proxy" loading="lazy"></div><figcaption><strong>Proxy</strong> (a tab of Network): One proxy setting for the whole system and every amade application.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-bluetooth.jpg" alt="Settings: Bluetooth" loading="lazy"></div><figcaption><strong>Bluetooth</strong>: Pair and connect headphones, keyboards and phones.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-printers.jpg" alt="Settings: Printers" loading="lazy"></div><figcaption><strong>Printers</strong>: Add printers and choose the default.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-users.jpg" alt="Settings: Users and Groups" loading="lazy"></div><figcaption><strong>Users and Groups</strong>: Accounts, passwords and groups of the computer.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-applications.jpg" alt="Settings: Default Applications" loading="lazy"></div><figcaption><strong>Default Applications</strong>: Which program opens web pages, mail, pictures, music and documents.</figcaption></figure>
+      <figure><div class="window bevel"><img src="/assets/images/settings-datetime.jpg" alt="Settings: Date and Time" loading="lazy"></div><figcaption><strong>Date and Time</strong>: Time zone, network time and the formats of dates and numbers.</figcaption></figure>
     </div>
   </div>
 </section>
