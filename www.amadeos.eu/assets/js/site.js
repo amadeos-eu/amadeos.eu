@@ -8,16 +8,3 @@ document.body.addEventListener('htmx:afterSettle', () => {
   });
 });
 
-// Look switch in the header: Horizon (the default) or Classic. The choice stays in this browser only
-// (localStorage, no cookie); the inline script in each page's <head> applies it before the page is drawn.
-function applyLook(look) {
-  document.documentElement.dataset.look = look;
-  document.querySelectorAll('.look button').forEach((button) => button.setAttribute('aria-pressed', button.dataset.look === look));
-}
-document.body.addEventListener('click', (event) => {
-  const button = event.target.closest('.look button');
-  if (!button) return;
-  try { localStorage.setItem('look', button.dataset.look); } catch (e) { /* private window: not remembered */ }
-  applyLook(button.dataset.look);
-});
-document.body.addEventListener('htmx:afterSettle', () => applyLook(document.documentElement.dataset.look || 'horizon'));
