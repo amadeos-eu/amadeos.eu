@@ -1,50 +1,40 @@
 /* The Horizon look of amadeos.eu: the colours of HorizonThemes in amade-commons (dark bars, light pages, the teal
-   accent), rounded corners and soft shadows. It applies unless <html data-look="classic">; then amadeos.css alone
-   gives the Classic (CDE) look. The switch in includes/header.html sets data-look, assets/js/site.js remembers it. */
-html:not([data-look="classic"]) {
+   accent), rounded corners and soft shadows, on top of the base layout in amadeos.css. */
+{
   --slate: #242531; --slate-dark: #14151d; --slate-light: #4a4c5e;
   --warm: #ffffff; --warm-light: #ffffff; --warm-dark: #c6c7d0; --warm-text: #1e1f29;
   --page: #f3f3f6; --text: #1e1f29; --muted: #5d5f70; --accent: #2fb8b0; --accent-dark: #23948e;
   font-family: "Inter", "Noto Sans", "DejaVu Sans", "Segoe UI", Helvetica, Arial, sans-serif;
 }
-html:not([data-look="classic"]) a { color: var(--accent-dark); }
-html:not([data-look="classic"]) .bevel,
-html:not([data-look="classic"]) .bevel-in { border: 1px solid #e2e2ea; border-radius: 14px; box-shadow: 0 1px 2px rgba(20,21,29,.06), 0 6px 20px rgba(20,21,29,.06); }
-html:not([data-look="classic"]) header.top { background: rgba(20,21,29,.94); backdrop-filter: blur(8px); border-bottom: 0; }
-html:not([data-look="classic"]) .brand { color: #e8e9f1; }
-html:not([data-look="classic"]) nav.main a { color: #c9cad6; border: 0; border-radius: 999px; padding: 6px 12px; }
-html:not([data-look="classic"]) nav.main a:hover { background: rgba(255,255,255,.08); color: #fff; }
-html:not([data-look="classic"]) nav.main a.active { background: rgba(47,184,176,.18); color: #7fe0da; }
-html:not([data-look="classic"]) .hero .status { border-radius: 999px; background: rgba(47,184,176,.18); border-color: rgba(47,184,176,.5); color: #bff3ef; }
-html:not([data-look="classic"]) .window { background: #242531; padding: 0; border: 1px solid #3a3c4c; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-html:not([data-look="classic"]) .window .title { background: #2c2d3a; border: 0; margin: 0; padding: 7px 12px; font-size: .8rem; color: #e8e9f1; position: relative; }
-html:not([data-look="classic"]) .window .title::after { content: "–  ▢  ✕"; position: absolute; right: 12px; color: #8c8ea2; letter-spacing: 4px; }
-html:not([data-look="classic"]) .btn { border: 0; border-radius: 10px; background: rgba(255,255,255,.9); color: #1e1f29; }
-html:not([data-look="classic"]) .btn:hover { background: #fff; }
-html:not([data-look="classic"]) .btn.primary { background: var(--accent); color: #0e2a28; }
-html:not([data-look="classic"]) .btn.primary:hover { background: #45cbc3; color: #0e2a28; }
-html:not([data-look="classic"]) section.alt { background: #e9e9ef; }
-html:not([data-look="classic"]) .teaser, html:not([data-look="classic"]) .app, html:not([data-look="classic"]) .game-card, html:not([data-look="classic"]) .card, html:not([data-look="classic"]) .book { padding: 0; overflow: hidden; }
-html:not([data-look="classic"]) .teaser .text, html:not([data-look="classic"]) .app .text, html:not([data-look="classic"]) .game-card .text { padding: 14px 16px 16px; }
-html:not([data-look="classic"]) .card, html:not([data-look="classic"]) .book { padding: 20px; }
-html:not([data-look="classic"]) .teaser p, html:not([data-look="classic"]) .app p, html:not([data-look="classic"]) .game-card p { color: var(--muted); }
-html:not([data-look="classic"]) .game-card img { background: #14151d; }
-html:not([data-look="classic"]) .stack span { border-radius: 999px; }
-html:not([data-look="classic"]) th { background: #e9e9ef; }
-html:not([data-look="classic"]) pre { background: #14151d; color: #e8e9f1; border-radius: 10px; }
-html:not([data-look="classic"]) footer { background: #14151d; }
-/* The look switch (both looks) */
-.look { display: inline-flex; margin-left: 12px; border-radius: 999px; background: rgba(255,255,255,.08); padding: 3px; font-size: .8rem; }
-.look button { font: inherit; border: 0; background: none; color: #c9cad6; padding: 4px 10px; border-radius: 999px; cursor: pointer; }
-.look button[aria-pressed="true"] { background: var(--accent); color: #0e2a28; }
-html[data-look="classic"] .look { border-radius: 0; background: var(--warm); border: 2px solid; border-color: var(--warm-dark) var(--warm-light) var(--warm-light) var(--warm-dark); padding: 1px; }
-html[data-look="classic"] .look button { border-radius: 0; color: var(--text); }
-html[data-look="classic"] .look button[aria-pressed="true"] { background: var(--slate); color: #fff; }
-/* Pictures of each look: <img class="only-horizon"> / <img class="only-classic"> */
-html[data-look="classic"] .only-horizon, html:not([data-look="classic"]) .only-classic { display: none; }
-html:not([data-look="classic"]) .hero, html:not([data-look="classic"]) .page-head { background: linear-gradient(90deg, rgba(20,21,29,.92) 0%, rgba(20,21,29,.7) 45%, rgba(20,21,29,.25) 100%), #14151d url(/assets/images/horizon-waves.jpg) center / cover; }
-html:not([data-look="classic"]) .hero h1 { color: #fff; }
+a { color: var(--accent-dark); }
+.bevel,
+.bevel-in { border: 1px solid #e2e2ea; border-radius: 14px; box-shadow: 0 1px 2px rgba(20,21,29,.06), 0 6px 20px rgba(20,21,29,.06); }
+header.top { background: rgba(20,21,29,.94); backdrop-filter: blur(8px); border-bottom: 0; }
+.brand { color: #e8e9f1; }
+nav.main a { color: #c9cad6; border: 0; border-radius: 999px; padding: 6px 12px; }
+nav.main a:hover { background: rgba(255,255,255,.08); color: #fff; }
+nav.main a.active { background: rgba(47,184,176,.18); color: #7fe0da; }
+.hero .status { border-radius: 999px; background: rgba(47,184,176,.18); border-color: rgba(47,184,176,.5); color: #bff3ef; }
+.window { background: #242531; padding: 0; border: 1px solid #3a3c4c; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.window .title { background: #2c2d3a; border: 0; margin: 0; padding: 7px 12px; font-size: .8rem; color: #e8e9f1; position: relative; }
+.window .title::after { content: "–  ▢  ✕"; position: absolute; right: 12px; color: #8c8ea2; letter-spacing: 4px; }
+.btn { border: 0; border-radius: 10px; background: rgba(255,255,255,.9); color: #1e1f29; }
+.btn:hover { background: #fff; }
+.btn.primary { background: var(--accent); color: #0e2a28; }
+.btn.primary:hover { background: #45cbc3; color: #0e2a28; }
+section.alt { background: #e9e9ef; }
+.teaser, .app, .game-card, .card, .book { padding: 0; overflow: hidden; }
+.teaser .text, .app .text, .game-card .text { padding: 14px 16px 16px; }
+.card, .book { padding: 20px; }
+.teaser p, .app p, .game-card p { color: var(--muted); }
+.game-card img { background: #14151d; }
+.stack span { border-radius: 999px; }
+th { background: #e9e9ef; }
+pre { background: #14151d; color: #e8e9f1; border-radius: 10px; }
+footer { background: #14151d; }
+.hero, .page-head { background: linear-gradient(90deg, rgba(20,21,29,.92) 0%, rgba(20,21,29,.7) 45%, rgba(20,21,29,.25) 100%), #14151d url(/assets/images/horizon-waves.jpg) center / cover; }
+.hero h1 { color: #fff; }
 @media (min-width: 1100px) { header.top .wrap { flex-wrap: nowrap; max-width: 1240px; } nav.main a { font-size: .9rem; padding: 5px 8px; } }
 @media (max-width: 860px) {
-  html:not([data-look="classic"]) .hero, html:not([data-look="classic"]) .page-head { background: linear-gradient(rgba(20,21,29,.9), rgba(20,21,29,.75)), #14151d url(/assets/images/horizon-waves.jpg) center / cover; }
+  .hero, .page-head { background: linear-gradient(rgba(20,21,29,.9), rgba(20,21,29,.75)), #14151d url(/assets/images/horizon-waves.jpg) center / cover; }
 }
