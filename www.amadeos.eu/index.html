@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>amadeOS · Digital sovereignty starts on your desktop</title>
-  <meta name="description" content="amadeOS is a free, European desktop operating system: Debian, Linux and a classic desktop written in Java, under the EUPL.">
+  <meta name="description" content="amadeOS is a free, European desktop operating system: Debian, Linux and a desktop written in Java, modern or classic, under the EUPL.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
+  <link rel="stylesheet" href="/assets/css/horizon.css">
+  <script>try{document.documentElement.dataset.look=localStorage.getItem('look')||'horizon'}catch(e){}</script>
 </head>
 <body>
   <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
@@ -16,10 +18,10 @@
 <div class="hero">
   <div class="wrap">
     <div>
-      <span class="status">Version 1.0.0 · released 27 October 2026</span>
+      <span class="status">Version 1.1.0 · released 4 November 2026 · now with the Horizon look</span>
       <h1>Digital sovereignty starts on your desktop.</h1>
       <p class="lead">amadeOS is a free, European desktop operating system. Debian and Linux underneath,
-        and on top a calm, classic desktop written entirely in Java, with its own applications and games.
+        and on top a desktop written entirely in Java, modern (Horizon) or classic (CDE), as you like, with its own applications and games.
         Open source from the login screen to the text editor, under the EU's own licence.</p>
       <div class="buttons">
         <a class="btn primary" href="/download.html">Get amadeOS</a>
@@ -29,7 +31,8 @@
     <figure>
       <div class="window bevel">
         <div class="title">amadeOS · Workspace One</div>
-        <img src="/assets/images/desktop-with-windows.jpg" width="1280" height="800"
+        <img class="only-horizon" src="/assets/images/horizon-desktop.jpg" width="1440" height="900" alt="The Horizon look with the top bar, the Calendar, two widgets and the dock">
+        <img class="only-classic" src="/assets/images/desktop-with-windows.jpg" width="1280" height="800"
              alt="The amadeOS desktop with the Front Panel at the bottom and the File Manager, the Text Editor and the Calendar open">
       </div>
     </figure>
@@ -42,12 +45,12 @@
     <p class="intro">Everything in amadeOS is free software under the EUPL-1.2, a licence published by the
       European Commission. No account, no telemetry, no advertising: your computer works for you.</p>
     <div class="teasers">
-      <a class="teaser bevel" href="/desktop.html"><img src="/assets/images/drawer-office.jpg" alt="" loading="lazy">
-        <div class="text"><h3>A classic desktop, made new</h3><p>Front Panel, workspaces and Motif windows in the tradition of CDE, written in Java.</p></div></a>
+      <a class="teaser bevel" href="/desktop.html"><img class="only-horizon" src="/assets/images/horizon-widgets.jpg" alt="" loading="lazy"><img class="only-classic" src="/assets/images/drawer-office.jpg" alt="" loading="lazy">
+        <div class="text"><h3>Two looks, one desktop</h3><p>Horizon with top bar, dock, search and widgets, or Classic with the Front Panel of CDE. Switch at any time.</p></div></a>
       <a class="teaser bevel" href="/applications.html"><img src="/assets/images/writepad.jpg" alt="" loading="lazy">
         <div class="text"><h3>Applications for every day</h3><p>Files, documents, mail, calendar, contacts, books, pictures and music, plus LibreOffice and Firefox.</p></div></a>
-      <a class="teaser bevel" href="/games.html"><img src="/assets/images/town.jpg" alt="" loading="lazy">
-        <div class="text"><h3>Seventeen games</h3><p>From Mines and Solitaire to real-time strategy, city building and an adventure, all included.</p></div></a>
+      <a class="teaser bevel" href="/games.html"><img src="/assets/images/rivet.jpg" alt="" loading="lazy">
+        <div class="text"><h3>Eighteen games</h3><p>From Mines and Solitaire to strategy, city building, an adventure and the 3D shooter Rivet.</p></div></a>
       <a class="teaser bevel" href="/handbooks.html"><img src="/assets/images/settings.jpg" alt="" loading="lazy">
         <div class="text"><h3>Three handbooks</h3><p>For users, for application developers and for game makers, online and on every amadeOS computer.</p></div></a>
     </div>

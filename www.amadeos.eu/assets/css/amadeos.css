@@ -34,7 +34,7 @@ code, pre { font-family: "DejaVu Sans Mono", "Noto Sans Mono", Consolas, monospa
 header.top { background: var(--warm); border-bottom: 2px solid var(--warm-dark); position: sticky; top: 0; z-index: 10; }
 header.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 56px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: bold; font-size: 1.25rem; }
-.brand img { width: 31px; height: 25px; }
+.brand img { width: 28px; height: 28px; }
 nav.main { display: flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
 nav.main a { text-decoration: none; color: var(--text); padding: 5px 10px; font-size: .95rem; border: 2px solid transparent; }
 nav.main a:hover { border-color: var(--warm-light) var(--warm-dark) var(--warm-dark) var(--warm-light); background: #d4cbc2; }

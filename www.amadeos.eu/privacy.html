@@ -7,6 +7,8 @@
   <meta name="description" content="Privacy policy of amadeos.eu: no cookies, no trackers, only the usual server log files.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
+  <link rel="stylesheet" href="/assets/css/horizon.css">
+  <script>try{document.documentElement.dataset.look=localStorage.getItem('look')||'horizon'}catch(e){}</script>
 </head>
 <body>
   <div class="htmx-fragment" hx-get="/includes/header.html" hx-trigger="load" hx-swap="outerHTML">
@@ -36,6 +38,9 @@
     <h2>3. No cookies, no tracking</h2>
     <p>This website sets no cookies and uses no analytics service, no social media plugins and no content from other
       servers. Fonts and scripts are delivered by this server itself.</p>
+    <p>The look you choose with the Horizon / Classic switch at the top is remembered in your own browser
+      (<code>localStorage</code>, key <code>look</code>). It is never sent to the server, and you can delete it with
+      your browser's site data.</p>
     <h2>4. Links to other websites</h2>
     <p>Links to GitHub and to the handbooks on GitHub Pages lead to websites of GitHub, Inc. Once you follow such a
       link, the privacy policy of that provider applies.</p>
