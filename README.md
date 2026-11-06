@@ -29,13 +29,19 @@ A new page: copy a page such as `why.html`, change title, description and conten
 
 ### Run locally
 
-HTMX loads the includes over HTTP, so open the site through a local web server, not as `file://`:
+HTMX loads the includes over HTTP, so open the site through a local web server, not as `file://`. Any static
+server works; run one of these from the repository root and open <http://localhost:8080/>:
 
 ```bash
+# Node.js (npm): no install, npx fetches http-server once; -c-1 turns off caching so edits show on reload
+npx http-server www.amadeos.eu -p 8080 -c-1
+
+# Java 18 or newer: the JDK's own web server
+jwebserver -d "$PWD/www.amadeos.eu" -p 8080
+
+# Python 3
 python3 -m http.server 8080 -d www.amadeos.eu
 ```
-
-and open <http://localhost:8080/>.
 
 ### Deploy
 
