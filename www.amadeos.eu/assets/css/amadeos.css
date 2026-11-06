@@ -59,7 +59,7 @@ section { padding: 56px 0; }
 section.alt { background: #ece6e0; }
 h2 { font-size: 1.9rem; margin: 0 0 8px; }
 p.intro { color: var(--muted); margin: 0 0 28px; max-width: 760px; font-size: 1.05rem; }
-h3 { margin: 0 0 6px; font-size: 1.1rem; }
+h3 { margin: 15px 0 6px 0; font-size: 1.1rem; }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
 .card { background: var(--warm-light); padding: 18px; }

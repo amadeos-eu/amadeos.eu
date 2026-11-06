@@ -20,21 +20,37 @@
     <div class="two">
       <div>
         <h2>amadeOS 1.1.0</h2>
+
         <p>Released on 4 November 2026. One image for 64-bit PCs, 1.8 GB. New in 1.1.0: the Horizon look, Image Editor, Book Editor, Terminal, Webcam, Task Manager, Disks, the game Rivet and many new pages in Settings.</p>
+        
+        <h3>Step 1: Download ISO</h3>
+
         <div class="buttons">
           <a class="btn primary" href="https://github.com/amadeos-eu/amadeos/releases/download/v1.1.0/amadeos-1.1.0-amd64.iso">Download amadeOS 1.1.0</a>
           <a class="btn" href="https://github.com/amadeos-eu/amadeos/releases/tag/v1.1.0">Release notes</a>
         </div>
-        <h3>Check the download</h3>
+        
+        <h3>Step 2: Check the download</h3>
+        
         <p>The SHA-256 checksum of <code>amadeos-1.1.0-amd64.iso</code> is</p>
         <pre><code>4b7ebe71441187a59d9e2d597cee028f5d66461ca169aeafe0dd3d8542448d58</code></pre>
         <p>Check it in the folder of the download with</p>
         <pre><code>echo "4b7ebe71441187a59d9e2d597cee028f5d66461ca169aeafe0dd3d8542448d58  amadeos-1.1.0-amd64.iso" | sha256sum -c</code></pre>
+
+        <h3>Step 3: Write to USB and boot Live System</h3>
+
         <p><a href="https://docs.amadeos.eu/amadeos/12-writing-a-usb-stick/">Chapter 12 of the User's Handbook</a>
-          explains how to write the image to a USB stick and
-          <a href="https://docs.amadeos.eu/amadeos/14-installing/">chapter 14</a> how to install amadeOS.
+          explains how to write the image to a USB stick.</p>
+          
+        <h3>Step 4: Boot Live System and install to Harddisk</h3>
+
+        <p><a href="https://docs.amadeos.eu/amadeos/13-starting-the-live-system/">Chapter 13</a> explains how to boot the Live System from USB-Stick.</p>
+
+        <p>Then <a href="https://docs.amadeos.eu/amadeos/14-installing/">Chapter 14</a> describes how to install amadeOS.
           Older and newer versions are on the <a href="https://github.com/amadeos-eu/amadeos/releases">releases page</a>.</p>
-        <h3>Build it yourself</h3>
+        
+        <h3>Alternative: Build it yourself</h3>
+
         <p>You can also build the image from the source code with one script:</p>
         <pre><code>git clone https://github.com/amadeos-eu/amadeos.git
 cd amadeos
