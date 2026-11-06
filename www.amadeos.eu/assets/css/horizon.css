@@ -1,6 +1,6 @@
 /* The Horizon look of amadeos.eu: the colours of HorizonThemes in amade-commons (dark bars, light pages, the teal
    accent), rounded corners and soft shadows, on top of the base layout in amadeos.css. */
-{
+:root {
   --slate: #242531; --slate-dark: #14151d; --slate-light: #4a4c5e;
   --warm: #ffffff; --warm-light: #ffffff; --warm-dark: #c6c7d0; --warm-text: #1e1f29;
   --page: #f3f3f6; --text: #1e1f29; --muted: #5d5f70; --accent: #2fb8b0; --accent-dark: #23948e;
