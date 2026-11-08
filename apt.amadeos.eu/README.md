@@ -20,8 +20,9 @@ apt.amadeos.eu/
    (amadeos-eu/amadeos-ci `release`).
 2. The workflow [`apt-repository.yml`](../.github/workflows/apt-repository.yml) runs every 30 minutes. It lists the
    stable releases of all repositories (only API calls) and compares the list with `https://apt.amadeos.eu/state.txt`.
-   Nothing new: it stops. Otherwise it downloads the packages, builds and signs the repository and uploads it with
-   rsync. A push to `apt.amadeos.eu/` and *Run workflow* (with *force*) start it too.
+   Nothing new: it stops. Otherwise it downloads the new packages (the others come from the Actions cache), builds
+   and signs the repository and uploads it with rsync. Each package keeps the time of its GitHub asset, so rsync
+   sends only the packages the server does not have yet, plus the indexes. A push to `apt.amadeos.eu/` and *Run workflow* (with *force*) start it too.
 3. apt on the systems fetches the new index with its daily refresh (`apt-daily.timer`), and the Front Panel shows
    the update.
 

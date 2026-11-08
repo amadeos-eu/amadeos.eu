@@ -27,7 +27,8 @@ trap 'rm -rf "$work"' EXIT
 rm -rf "$out"
 mkdir -p "$out/pool/main" "$out/dists/$suite/main/binary-amd64" "$out/dists/$suite/main/dep11"
 out=$(realpath "$out")
-cp -r "$pool/." "$out/pool/main/"
+# Keeping the times of the files lets rsync skip the packages the server already has.
+cp -r --preserve=timestamps "$pool/." "$out/pool/main/"
 
 # --- amadeos-archive-keyring: the key and the source file, so that key changes reach systems as an update ---
 key="$here/amadeos-archive-key.asc"

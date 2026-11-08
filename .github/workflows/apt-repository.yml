@@ -70,6 +70,16 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq apt-utils appstream appstream-compose imagemagick
 
+      # The packages of the last run: collect.sh downloads only what is new. The cache is only a shortcut; an
+      # empty or outdated one just means more downloads.
+      - name: Restore the package pool
+        if: steps.changed.outputs.changed == 'true'
+        uses: actions/cache@v4
+        with:
+          path: pool
+          key: apt-pool-${{ hashFiles('state.txt') }}
+          restore-keys: apt-pool-
+
       - name: Download the packages
         if: steps.changed.outputs.changed == 'true'
         env:
@@ -114,7 +124,9 @@ jobs:
           dest="amadeos-apt@$APT_DEPLOY_HOST:"
           # Order matters for clients updating meanwhile: new packages first, then the indexes, then the signed
           # Release files that point to them, and only at the end the removal of what is gone.
-          "${sync[@]}" out/pool/ "${dest}pool/"
+          # The packages carry the times of their GitHub assets (collect.sh), so rsync sends only new ones and
+          # lists them.
+          "${sync[@]}" --itemize-changes out/pool/ "${dest}pool/"
           "${sync[@]}" --exclude='/dists/*/Release' --exclude='/dists/*/InRelease' --exclude='/dists/*/Release.gpg' \
             --exclude='/state.txt' out/ "$dest"
           "${sync[@]}" out/dists/ "${dest}dists/"
