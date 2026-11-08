@@ -50,8 +50,10 @@ expects this repository next to it (and datazuul-devops in `../../datazuul/`, fo
 
 ```bash
 cd ../amadeos-devops/ansible
-ansible-playbook playbooks/deploy-www.amadeos.eu.yml
+ansible-playbook playbooks/sync-www.amadeos.eu.yml
 ```
 
-The playbook sets up nginx for www.amadeos.eu and amadeos.eu, gets the Let's Encrypt certificate and copies
-`www.amadeos.eu/` to `/var/www/www.amadeos.eu` on the server (rsync, removing files that are gone here).
+This only copies `www.amadeos.eu/` to `/var/www/www.amadeos.eu` on the server (rsync, removing files that are gone
+here); nginx, the certificate and the rest of the server stay untouched. `git pull` this repository first, otherwise
+the old state goes out. The full playbook `deploy-www.amadeos.eu.yml` also sets up nginx for www.amadeos.eu and
+amadeos.eu and gets the Let's Encrypt certificate; it is only needed when the server setup of the site changes.
