@@ -7,8 +7,9 @@
 # The repositories are those of repositories.list in amadeos-eu/amadeos plus extra-repositories.list next to
 # this folder. The list is read from develop, where a new repository is added first: only stable releases are
 # taken, and a repository has those only once it was promoted to main. Of each one, the KEEP (default 3) newest GitHub Releases that are neither drafts nor pre-releases
-# are taken, with every *.deb asset. Files already in the pool are not downloaded again (when the pool is kept
-# between runs), files of releases that dropped out are removed. The state file lists repository, tag, file and the
+# are taken, with every *.deb asset. Files already in the pool are not downloaded again (the workflow keeps the
+# pool between runs in the Actions cache), files of releases that dropped out are removed. Every file gets the
+# time of its GitHub asset, so that the upload (rsync) sends only the packages the server does not have yet. The state file lists repository, tag, file and the
 # SHA-256 digest GitHub reports (or the asset ID of an asset without one) of every package, sorted, so two runs with
 # the same releases write the same file; the workflow compares it with the published one before downloading.
 #
@@ -42,7 +43,7 @@ for repo in $repos; do
     [ -n "$releases" ] || { echo "[collect] $repo: no stable release"; continue; }
     while IFS= read -r release; do
         tag=$(jq -r .tag_name <<<"$release")
-        while IFS=$'\t' read -r name url digest id; do
+        while IFS=$'\t' read -r name url digest id updated; do
             [ -n "$name" ] || continue
             printf '%s\t%s\t%s\t%s\n' "$repo" "$tag" "$name" "${digest:-asset-$id}" >> "$tmp_state"
             [ "${LIST_ONLY:-0}" = 1 ] && continue
@@ -60,7 +61,10 @@ for repo in $repos; do
                 echo "[collect] $repo/$name does not match the digest GitHub reports" >&2
                 exit 1
             fi
-        done < <(jq -r '.assets[] | select(.name | endswith(".deb")) | [.name, .browser_download_url, (.digest // ""), .id] | @tsv' <<<"$release")
+            # The time of the asset, not of the download: then the file looks the same to rsync in every run,
+            # and the upload sends only packages that are new.
+            touch -d "$updated" "$dir/$name"
+        done < <(jq -r '.assets[] | select(.name | endswith(".deb")) | [.name, .browser_download_url, (.digest // ""), .id, .updated_at] | @tsv' <<<"$release")
     done <<<"$releases"
 done
 
