@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Download · amadeOS</title>
-  <meta name="description" content="Download amadeOS 1.2.0: the image for a USB stick, its checksum, what your computer needs, and how to build the image yourself.">
+  <meta name="description" content="Download amadeOS 1.2.0: the image for a USB stick, its checksum, what your computer needs, how to add amadeOS to an existing Debian or Ubuntu, and how to build the image yourself.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
   <link rel="stylesheet" href="/assets/css/horizon.css">
@@ -14,7 +14,7 @@
     <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/system.html">System</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
   </div>
 <main>
-<div class="page-head"><div class="wrap"><h1>Get amadeOS</h1><p>amadeOS comes as one image file for a USB stick. It starts as a live system that changes nothing on your computer, and installs onto the disk from there, on its own or next to Windows.</p></div></div>
+<div class="page-head"><div class="wrap"><h1>Get amadeOS</h1><p>amadeOS comes as one image file for a USB stick. It starts as a live system that changes nothing on your computer, and installs onto the disk from there, on its own or next to Windows. A Debian or Ubuntu system you already have can get the amadeOS desktop as packages.</p></div></div>
 <section>
   <div class="wrap">
     <div class="two">
@@ -49,6 +49,24 @@
         <p>Then <a href="https://docs.amadeos.eu/amadeos/14-installing/">Chapter 14</a> describes how to install amadeOS.
           Older and newer versions are on the <a href="https://github.com/amadeos-eu/amadeos/releases">releases page</a>.</p>
         
+        <h3>Alternative: On an existing Debian or Ubuntu</h3>
+
+        <p>Already running Debian 13 or Ubuntu 26.04 (or Xubuntu, Kubuntu …)? Add the amadeOS desktop from the
+          package repository <code>apt.amadeos.eu</code>, without the image. Your files and programs stay; updates
+          come with the normal system updates. The programs need Java 25: <code>apt policy openjdk-25-jre</code>
+          must show a candidate.</p>
+        <pre><code>wget https://apt.amadeos.eu/amadeos-archive-keyring.deb
+sudo apt install ./amadeos-archive-keyring.deb
+sudo apt update
+sudo apt install amadeos-desktop</code></pre>
+        <p>Then let the amadeOS login screen start instead of the old one (here LightDM; <code>gdm3</code> on
+          Ubuntu, <code>sddm</code> on Kubuntu) and restart:</p>
+        <pre><code>sudo systemctl disable lightdm
+sudo systemctl enable amadeos-dm
+sudo reboot</code></pre>
+        <p><a href="https://docs.amadeos.eu/amadeos/17-existing-debian-or-ubuntu/">Chapter 17 of the User's Handbook</a>
+          explains every step, how to remove the old desktop and how to go back.</p>
+
         <h3>Alternative: Build it yourself</h3>
 
         <p>You can also build the image from the source code with one script:</p>
