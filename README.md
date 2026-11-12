@@ -20,7 +20,7 @@ www.amadeos.eu/
   includes/header.html includes/footer.html   shared menu and footer (links are root-relative)
   assets/css/amadeos.css                      Warm Motif palette and Motif bevels of the amadeOS desktop
   assets/js/htmx.min.js                       HTMX 2.0.6
-  assets/js/site.js                           marks the menu entry of the current page
+  assets/js/site.js                           marks the menu entry of the current page; click to enlarge pictures
   assets/images/                              screenshots from the amadeOS User's Handbook, at most 1280 px wide
 ```
 
