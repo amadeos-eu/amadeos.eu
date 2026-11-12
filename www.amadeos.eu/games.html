@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Games · amadeOS</title>
-  <meta name="description" content="Eighteen games come with amadeOS, from Mines and Solitaire to real-time strategy, city building, an adventure and a 3D shooter.">
+  <meta name="description" content="amadeOS comes with Mines and Solitaire; eighteen more games, from arcade classics to strategy, an adventure, a 3D shooter, a driving game and pinball, install from Software.">
   <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/amadeos.css">
   <link rel="stylesheet" href="/assets/css/horizon.css">
@@ -14,12 +14,36 @@
     <noscript><a href="/index.html">amadeOS</a> · <a href="/why.html">Why</a> · <a href="/desktop.html">Desktop</a> · <a href="/system.html">System</a> · <a href="/applications.html">Applications</a> · <a href="/games.html">Games</a> · <a href="/download.html">Download</a> · <a href="/handbooks.html">Handbooks</a> · <a href="/contribute.html">Take part</a></noscript>
   </div>
 <main>
-<div class="page-head"><div class="wrap"><h1>Eighteen games, ready to play</h1><p>From Mines and Solitaire through arcade classics to strategy, city building, an adventure and a 3D shooter, all drawn anew and all included in amadeOS.</p></div></div>
+<div class="page-head"><div class="wrap"><h1>Twenty games, two of them on board</h1><p>amadeOS comes with Mines and Solitaire. Eighteen more, from arcade classics to strategy, city building, an adventure, a 3D shooter, a driving game and pinball, are ready to install whenever you want them. All drawn anew, all free.</p></div></div>
 <section>
   <div class="wrap">
+    <h2>Included with amadeOS</h2>
+    <p>These two are in the Games drawer from the first start.</p>
     <div class="game-list">
       <div class="game-card bevel"><img src="/assets/images/mines.jpg" alt="" loading="lazy"><div class="text"><h3>Mines</h3><p>Find all mines on the field without stepping on one. Three sizes, from Beginner to Expert.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-mines-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-mines-game/issues">Report a problem</a></p></div></div>
       <div class="game-card bevel"><img src="/assets/images/solitaire.jpg" alt="" loading="lazy"><div class="text"><h3>Solitaire</h3><p>Klondike, the classic patience, with Draw One or Draw Three and unlimited undo.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-solitaire-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-solitaire-game/issues">Report a problem</a></p></div></div>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <h2>Optional games</h2>
+    <div class="prose">
+      <p>The other games are not part of the image, so that amadeOS stays small and fits an office computer as well.
+        They are packages in the amadeOS package repository and take a minute to install; after that they are in the
+        Games drawer and get updates like everything else.</p>
+      <ul>
+        <li><strong>One game:</strong> open <strong>Software</strong>, choose <em>Games</em> on the left or search for
+          the game's name, and click <strong>Install</strong>.</li>
+        <li><strong>All games at once:</strong> in a terminal,
+          <pre><code>sudo apt install amadeos-games</code></pre>
+          Games of later amadeOS releases then arrive with the normal updates.</li>
+      </ul>
+      <p>A single game works in the terminal too, for example <code>sudo apt install amade-snake-game</code>; the
+        package names are <code>amade-&lt;name&gt;-game</code>. The
+        <a href="https://docs.amadeos.eu/amadeos/49-games/">User's Handbook</a> explains every game.</p>
+    </div>
+    <div class="game-list">
       <div class="game-card bevel"><img src="/assets/images/paddle.jpg" alt="" loading="lazy"><div class="text"><h3>Paddle</h3><p>The ball game for two paddles, against the computer or two players on one keyboard.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-paddle-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-paddle-game/issues">Report a problem</a></p></div></div>
       <div class="game-card bevel"><img src="/assets/images/bricks.jpg" alt="" loading="lazy"><div class="text"><h3>Bricks</h3><p>Break the wall with ball and paddle. Silver bricks take two hits, gold ones never break.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-bricks-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-bricks-game/issues">Report a problem</a></p></div></div>
       <div class="game-card bevel"><img src="/assets/images/snake.jpg" alt="" loading="lazy"><div class="text"><h3>Snake</h3><p>Steer the snake to the apples; it grows longer and faster. Never bite the wall or yourself.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-snake-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-snake-game/issues">Report a problem</a></p></div></div>
@@ -36,10 +60,12 @@
       <div class="game-card bevel"><img src="/assets/images/town.jpg" alt="" loading="lazy"><div class="text"><h3>Town</h3><p>A city in isometric view: roads, zones, power and water. The town grows where people want to live.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-town-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-town-game/issues">Report a problem</a></p></div></div>
       <div class="game-card bevel"><img src="/assets/images/templar.jpg" alt="" loading="lazy"><div class="text"><h3>The Seal of the Templars</h3><p>A point-and-click adventure in three acts, from Paris in 1307 to La Rochelle and Tomar today.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-templar-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-templar-game/issues">Report a problem</a></p></div></div>
       <div class="game-card bevel"><img src="/assets/images/rivet.jpg" alt="" loading="lazy"><div class="text"><h3>Rivet</h3><p>A first-person shooter in 3D: fight your way through a mining station under the ice, against machines only.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-rivet-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-rivet-game/issues">Report a problem</a></p></div></div>
+      <div class="game-card bevel"><img src="/assets/images/cruise.jpg" alt="" loading="lazy"><div class="text"><h3>Cruise</h3><p>A relaxing drive through landscapes made as the road goes on, by day and night, in sun, rain and fog. Race the computer or a friend on a split screen.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-cruise-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-cruise-game/issues">Report a problem</a></p></div></div>
+      <div class="game-card bevel"><img src="/assets/images/pinball.jpg" alt="" loading="lazy"><div class="text"><h3>Pinball</h3><p>Three pinball tables with real ball physics, ramps, multiball and modes, for up to four players.</p><p class="code-links"><a href="https://github.com/amadeos-eu/amade-pinball-game">Source code</a> · <a href="https://github.com/amadeos-eu/amade-pinball-game/issues">Report a problem</a></p></div></div>
     </div>
   </div>
 </section>
-<section class="alt">
+<section>
   <div class="wrap prose">
     <h2>Learn how they are made</h2>
     <p>Every game is built on amade-game-engine, a 2D game engine in Java, and each one is explained chapter by chapter
